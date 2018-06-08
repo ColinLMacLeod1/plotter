@@ -1,0 +1,21 @@
+.App {
+}
+/* Blue: #20948B, Orange: #DE7A22, Sand: #F4CC70, Green: #6AB187 */
+.App-logo {
+	height: 80px;
+}
+
+.App-header {
+	background-color: #20948b;
+	height: 50px;
+	padding: 20px;
+	color: white;
+}
+
+.App-title {
+	font-size: 1.5em;
+}
+
+.App-intro {
+	font-size: large;
+}
