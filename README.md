@@ -9,3 +9,4 @@
 ### Sources
 
 [Favicon](https://www.favicon-generator.org/)
+[Logo](https://www.flaticon.com/free-icon/line-chart_179121)

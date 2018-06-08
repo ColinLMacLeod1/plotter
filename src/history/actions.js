@@ -1,8 +1,9 @@
-import {} from './constants'
+import { ADD_HISTORY } from './constants'
 
-const action = function action() {
+const action = function action(func) {
 	return {
-		type: 'action',
+		type: ADD_HISTORY,
+		func,
 	}
 }
 

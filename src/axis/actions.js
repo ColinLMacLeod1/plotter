@@ -1,9 +1,22 @@
-import {} from './constants'
+import { SET_XAXIS, SET_YAXIS, AXIS_ERRORS } from './constants'
 
-const action = function action() {
+export function setXAxis(xaxis) {
 	return {
-		type: 'action',
+		type: SET_XAXIS,
+		xaxis,
 	}
 }
 
-export default action
+export function setYAxis(yaxis) {
+	return {
+		type: SET_YAXIS,
+		yaxis,
+	}
+}
+
+export function axisError(error) {
+	return {
+		type: AXIS_ERRORS,
+		error,
+	}
+}

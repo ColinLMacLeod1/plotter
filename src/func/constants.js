@@ -1,0 +1,2 @@
+export const SET_FUNCTION = 'SET_FUNCTION'
+export const FUNCTION_ERRORS = 'FUNCTION_ERRORS'

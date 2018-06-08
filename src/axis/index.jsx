@@ -17,6 +17,7 @@ class ReactComponent extends Component {
 }
 
 const mapStateToProps = state => ({
+	
 })
 
 const connected = connect(mapStateToProps)(ReactComponent)

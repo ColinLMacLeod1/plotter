@@ -1,8 +1,10 @@
 .App {
+	text-align: center;
 }
 /* Blue: #20948B, Orange: #DE7A22, Sand: #F4CC70, Green: #6AB187 */
 .App-logo {
-	height: 80px;
+	height: 50px;
+	filter: invert(100%);
 }
 
 .App-header {
@@ -10,12 +12,20 @@
 	height: 50px;
 	padding: 20px;
 	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .App-title {
-	font-size: 1.5em;
+	font-size: 2em;
+	margin: 0 0 0 10px;
 }
 
 .App-intro {
 	font-size: large;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
