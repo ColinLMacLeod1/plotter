@@ -1,6 +1,9 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
+import Plot from './plot'
+import Func from './func'
+import Axis from './axis'
 
 const App = props => (
 	<div className="App">
@@ -9,7 +12,11 @@ const App = props => (
 			<h1 className="App-title">Plotter</h1>
 		</div>
 		<section className="App-body">
-			<h4>App</h4>
+			<div className="card box">
+				<Func />
+				<Axis />
+			</div>
+			<Plot />
 		</section>
 	</div>
 )

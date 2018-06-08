@@ -1,22 +1,35 @@
-import { SET_XAXIS, SET_YAXIS, AXIS_ERRORS } from './constants'
+import {
+	SET_AXES,
+	AXIS_ERRORS,
+	SET_TEMP_XAXIS,
+	SET_TEMP_YAXIS,
+} from './constants'
 
-export function setXAxis(xaxis) {
+export function setAxes(xaxis, yaxis) {
 	return {
-		type: SET_XAXIS,
+		type: SET_AXES,
 		xaxis,
-	}
-}
-
-export function setYAxis(yaxis) {
-	return {
-		type: SET_YAXIS,
 		yaxis,
 	}
 }
 
-export function axisError(error) {
+export function axisError(errors) {
 	return {
 		type: AXIS_ERRORS,
-		error,
+		errors,
+	}
+}
+
+export function setTempXAxis(tempx) {
+	return {
+		type: SET_TEMP_XAXIS,
+		tempx,
+	}
+}
+
+export function setTempYAxis(tempy) {
+	return {
+		type: SET_TEMP_YAXIS,
+		tempy,
 	}
 }
