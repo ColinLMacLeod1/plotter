@@ -7,7 +7,7 @@ const reducer = function historyReducer(state = initialState, action) {
 	switch (action.type) {
 		case ADD_HISTORY:
 			return {
-				history: state.history.push(action.func),
+				history: [action.func, ...state.history],
 			}
 		default:
 			return state

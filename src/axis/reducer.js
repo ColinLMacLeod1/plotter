@@ -16,33 +16,26 @@ const reducer = function axisReducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_AXES:
 			return {
+				...state,
 				xaxis: action.xaxis,
 				yaxis: action.yaxis,
 				tempx: '',
 				tempy: '',
-				errors: state.errors,
 			}
 		case AXIS_ERRORS:
 			return {
-				xaxis: state.xaxis,
-				yaxis: state.yaxis,
-				tempx: state.tempx,
-				tempy: state.tempy,
+				...state,
 				errors: action.errors,
 			}
 		case SET_TEMP_XAXIS:
 			return {
-				xaxis: state.xaxis,
-				yaxis: state.yaxis,
+				...state,
 				tempx: action.tempx,
-				tempy: state.tempy,
 				errors: [],
 			}
 		case SET_TEMP_YAXIS:
 			return {
-				xaxis: state.xaxis,
-				yaxis: state.yaxis,
-				tempx: state.tempx,
+				...state,
 				tempy: action.tempy,
 				errors: [],
 			}
