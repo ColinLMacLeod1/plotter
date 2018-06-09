@@ -11,7 +11,7 @@ If the user inputs an invalid function or axis errors will appear. The web app i
 To try it out, click the link above.  
 To run the dev server just `clone` the repo, run `npm run start` in the root directory and it will automatically open in you browser.  
 To deploy to a github page, specify the `"homepage"` in `package.json` and run `npm run deploy`  
-A simple build can be done with `npm run build` but serving will needed
+A simple build can be done with `npm run build` and can be served by installing serve with `npm install -g serve` and running `serve -s build`
 
 ### Libraries Used
 
