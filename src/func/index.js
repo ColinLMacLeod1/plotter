@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-//import compile from 'interval-arithmetic-eval'
 import { setFunctionInput, setFunction, funcErrors, setData } from './actions'
 import addHistory from '../history/actions'
 import refreshData from '../lib/refreshData'

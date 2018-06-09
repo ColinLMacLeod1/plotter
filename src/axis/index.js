@@ -32,15 +32,18 @@ class Axis extends Component {
 			newY = newY.replace(/\[/g, '').replace(/\]/g, '')
 			newX = JSON.parse(`[${newX}]`)
 			newY = JSON.parse(`[${newY}]`)
-			const data = refreshData(this.props.func, newX, newY)
-			this.props.setData(data)
-			this.props.setAxes(newX, newY)
+			if (newX[0] > newX[1] || newY[0] > newY[1]) {
+				this.props.axisError(['One of the axes is inverted'])
+			} else {
+				const data = refreshData(this.props.func, newX, newY)
+				this.props.setData(data)
+				this.props.setAxes(newX, newY)
+			}
 		}
 	}
 
 	render() {
-		const { tempx, tempy, setTempXAxis, setTempYAxis } = this.props
-
+		const { tempx, tempy, setTempXAxis, setTempYAxis, errors } = this.props
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
@@ -62,6 +65,11 @@ class Axis extends Component {
 					/>
 					<button type="submit" className="hidden-submit" />
 				</form>
+				{errors.map((error, index) => (
+					<p className="error-text" key={index}>
+						{error}
+					</p>
+				))}
 			</div>
 		)
 	}
@@ -73,6 +81,7 @@ const mapStateToProps = state => ({
 	tempx: state.axis.tempx,
 	tempy: state.axis.tempy,
 	func: state.func.func,
+	errors: state.axis.errors,
 })
 
 const connected = connect(

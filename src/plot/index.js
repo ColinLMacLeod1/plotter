@@ -15,16 +15,12 @@ class ReactComponent extends Component {
 
 	render() {
 		const { func, xaxis, yaxis, data } = this.props
-		console.log(this.props.containerWidth)
 		return (
 			<div>
-				<h5 className="plot-title">
-					{`Function: ${func},
-					x-axis: [${xaxis[0]},${xaxis[1]}],
-					y-axis: [${yaxis[0]},${yaxis[1]}]`}
-				</h5>
+				<h5 className="plot-title">{`y = ${func}`}</h5>
 				<LineChart
 					axes
+					grid
 					interpolate={'cardinal'}
 					width={this.props.containerWidth}
 					height={this.props.containerWidth}
