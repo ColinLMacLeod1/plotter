@@ -28,7 +28,7 @@ class ReactComponent extends Component {
 			newfunc.indexOf('tan') !== -1 &&
 			newfunc.indexOf('log') !== -1
 		) {
-			this.props.funcErrors(['This function contains letters other than x'])
+			this.props.funcErrors(['This function contains variables other than x'])
 		} else if (
 			isNaN(newfunc[newfunc.length - 1]) &&
 			newfunc[newfunc.length - 1] !== 'x' &&
