@@ -6,8 +6,8 @@ import {
 } from './constants'
 
 const initialState = {
-	xaxis: [-1, 1],
-	yaxis: [-1, 1],
+	xaxis: [-2.5, 2.5],
+	yaxis: [0, 5],
 	tempx: '',
 	tempy: '',
 	errors: [],

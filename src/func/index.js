@@ -22,13 +22,20 @@ class ReactComponent extends Component {
 	handleSubmit = e => {
 		e.preventDefault()
 		let newfunc = this.props.funcvalue
-		if (newfunc.replace('x', '').match(/[a-z]/i)) {
+		if (
+			newfunc.replace('x', '').match(/[a-z]/i) &&
+			newfunc.indexOf('sin') !== -1 &&
+			newfunc.indexOf('cos') !== -1 &&
+			newfunc.indexOf('tan') !== -1 &&
+			newfunc.indexOf('log') !== -1
+		) {
 			this.props.funcErrors(['This function contains letters other than x'])
 		} else if (
 			isNaN(newfunc[newfunc.length - 1]) &&
-			newfunc[newfunc.length - 1] !== 'x'
+			newfunc[newfunc.length - 1] !== 'x' &&
+			newfunc[newfunc.length - 1] !== ')'
 		) {
-			this.props.funcErrors(['This function does not end in a number or x'])
+			this.props.funcErrors(['This function is not valid'])
 		} else {
 			const data = refreshData(newfunc, this.props.xaxis, this.props.yaxis)
 			this.props.setFunction(newfunc)

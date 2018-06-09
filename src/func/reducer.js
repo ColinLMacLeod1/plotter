@@ -4,10 +4,13 @@ import {
 	SET_FUNCTION_INPUT,
 	SET_DATA,
 } from './constants'
+import refreshData from '../lib/refreshData'
+
+const initialData = refreshData('x^2', [-2.5, 2.5], [0, 5])
 
 const initialState = {
-	func: 'x',
-	data: [{ x: 0, y: 1 }, { x: 1, y: 2 }],
+	func: 'x^2',
+	data: initialData,
 	errors: [],
 	funcvalue: '',
 }

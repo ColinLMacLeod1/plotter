@@ -48,6 +48,7 @@
 }
 .plot-title {
 	position: relative;
+	top: -1rem;
 	margin-bottom: -2rem;
 }
 .input-box {

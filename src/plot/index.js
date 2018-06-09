@@ -29,6 +29,8 @@ class ReactComponent extends Component {
 					width={this.props.containerWidth}
 					height={this.props.containerWidth}
 					data={[[], data]}
+					xDomainRange={xaxis}
+					yDomainRange={yaxis}
 				/>
 			</div>
 		)
