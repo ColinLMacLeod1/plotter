@@ -47,8 +47,8 @@ class Axis extends Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-					<h4> Define your axes and press 'Enter'</h4>
-					<p className="subtext"> Ex: -1,1 </p>
+					<h5 className="input-title"> Define your axes and press 'Enter'</h5>
+					<p className="subtext input-title"> Ex: -1,1 </p>
 					<h4 className="func-input">x:</h4>
 					<input
 						type="text"
@@ -66,7 +66,7 @@ class Axis extends Component {
 					<button type="submit" className="hidden-submit" />
 				</form>
 				{errors.map((error, index) => (
-					<p className="error-text" key={index}>
+					<p className="axis-error-text" key={index}>
 						{error}
 					</p>
 				))}

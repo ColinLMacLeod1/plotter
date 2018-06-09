@@ -51,6 +51,9 @@
 	top: -1rem;
 	margin-bottom: -2rem;
 }
+.input-title {
+	margin: 10px;
+}
 .input-box {
 	max-height: 10rem;
 	min-width: 300px;
@@ -66,13 +69,18 @@
 }
 
 .subtext {
-	font-size: 0.8rem;
-	margin: -7px;
+	font-size: 0.7rem;
+	margin: -10px;
 	color: grey;
 }
-.error-text {
+.func-error-text {
 	font-size: 0.7rem;
-	margin: 0;
+	margin: 0 0 -0.5rem 0;
+	color: red;
+}
+.axis-error-text {
+	font-size: 0.7rem;
+	margin: -0.5rem 0 0 0;
 	color: red;
 }
 h4 {

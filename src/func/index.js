@@ -48,7 +48,10 @@ class ReactComponent extends Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-					<h4> Type your expression and press 'Enter'</h4>
+					<h5 className="input-title">
+						{' '}
+						Type your expression and press 'Enter'
+					</h5>
 					<h4 className="func-input">y = </h4>
 					<input
 						type="text"
@@ -56,7 +59,7 @@ class ReactComponent extends Component {
 						onChange={e => setFunctionInput(e.target.value)}
 					/>
 					{errors.map((error, index) => (
-						<p className="error-text" key={index}>
+						<p className="func-error-text" key={index}>
 							{error}
 						</p>
 					))}
