@@ -1,8 +1,13 @@
-import { SET_FUNCTION, FUNCTION_ERRORS, SET_FUNCTION_INPUT } from './constants'
+import {
+	SET_FUNCTION,
+	FUNCTION_ERRORS,
+	SET_FUNCTION_INPUT,
+	SET_DATA,
+} from './constants'
 
 const initialState = {
-	func: 'x^2',
-	data: [0, 1],
+	func: 'x',
+	data: [{ x: 0, y: 1 }, { x: 1, y: 2 }],
 	errors: [],
 	funcvalue: '',
 }
@@ -14,6 +19,7 @@ const reducer = function functionReducer(state = initialState, action) {
 				func: action.func,
 				data: action.data,
 				funcvalue: '',
+				errors: [],
 			}
 		case FUNCTION_ERRORS:
 			return {
@@ -23,8 +29,12 @@ const reducer = function functionReducer(state = initialState, action) {
 		case SET_FUNCTION_INPUT:
 			return {
 				...state,
-				errors: action.errors,
 				funcvalue: action.funcvalue,
+			}
+		case SET_DATA:
+			return {
+				...state,
+				data: action.data,
 			}
 		default:
 			return state

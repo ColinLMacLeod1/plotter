@@ -1,29 +1,35 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-//import { LineChart } from 'react-d3-basic'
-import { setFunction } from '../func/actions'
 //import compile from 'interval-arithmetic-eval'
+import { LineChart } from 'react-easy-chart'
+import Dimensions from 'react-dimensions'
 
 class ReactComponent extends Component {
 	static propTypes = {
 		func: PropTypes.string,
 		data: PropTypes.array,
-	}
-
-	componentWillMount() {
-		setFunction(this.props.func, [0, 1])
+		xaxis: PropTypes.array,
+		yaxis: PropTypes.array,
 	}
 
 	render() {
-		const { func, xaxis, yaxis } = this.props
-
+		const { func, xaxis, yaxis, data } = this.props
+		console.log(this.props.containerWidth)
 		return (
-			<div className="card box">
-				<h5>Plot</h5>
-				<h5>
-					{func},{xaxis}, {yaxis}
+			<div>
+				<h5 className="plot-title">
+					{`Function: ${func},
+					x-axis: [${xaxis[0]},${xaxis[1]}],
+					y-axis: [${yaxis[0]},${yaxis[1]}]`}
 				</h5>
+				<LineChart
+					axes
+					interpolate={'cardinal'}
+					width={this.props.containerWidth}
+					height={this.props.containerWidth}
+					data={[[], data]}
+				/>
 			</div>
 		)
 	}
@@ -38,4 +44,4 @@ const mapStateToProps = state => ({
 
 const connected = connect(mapStateToProps)(ReactComponent)
 
-export default connected
+export default Dimensions()(connected)

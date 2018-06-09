@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setAxes, setTempYAxis, setTempXAxis, axisError } from './actions'
+import { setData } from '../func/actions'
+import refreshData from '../lib/refreshData'
 
 class Axis extends Component {
 	static propTypes = {
@@ -13,24 +15,26 @@ class Axis extends Component {
 		setTempYAxis: PropTypes.func,
 		setTempXAxis: PropTypes.func,
 		setAxes: PropTypes.func,
+		setData: PropTypes.func,
+		func: PropTypes.string,
 	}
 
 	handleSubmit = e => {
-		console.log('Submit')
 		e.preventDefault()
-		if (this.props.tempx.indexOf(',') === -1) {
+		let newX = this.props.tempx
+		let newY = this.props.tempy
+		if (newX.indexOf(',') === -1) {
 			this.props.axisError(['The supplied x-axis is not valid (missing comma)'])
-		} else if (this.props.tempy.indexOf(',') === -1) {
+		} else if (newY.indexOf(',') === -1) {
 			this.props.axisError(['The supplied y-axis is not valid (missing comma)'])
 		} else {
-			console.log(
-				JSON.parse(`[${this.props.tempx}]`),
-				JSON.parse(`[${this.props.tempy}]`),
-			)
-			this.props.setAxes(
-				JSON.parse(`[${this.props.tempx}]`),
-				JSON.parse(`[${this.props.tempy}]`),
-			)
+			newX = newX.replace(/\[/g, '').replace(/\]/g, '')
+			newY = newY.replace(/\[/g, '').replace(/\]/g, '')
+			newX = JSON.parse(`[${newX}]`)
+			newY = JSON.parse(`[${newY}]`)
+			const data = refreshData(this.props.func, newX, newY)
+			this.props.setData(data)
+			this.props.setAxes(newX, newY)
 		}
 	}
 
@@ -68,11 +72,12 @@ const mapStateToProps = state => ({
 	yaxis: state.axis.yaxis,
 	tempx: state.axis.tempx,
 	tempy: state.axis.tempy,
+	func: state.func.func,
 })
 
 const connected = connect(
 	mapStateToProps,
-	{ setAxes, setTempYAxis, setTempXAxis, axisError },
+	{ setAxes, setTempYAxis, setTempXAxis, axisError, setData },
 )(Axis)
 
 export default connected

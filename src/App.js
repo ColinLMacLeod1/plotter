@@ -12,11 +12,13 @@ const App = props => (
 			<h1 className="App-title">Plotter</h1>
 		</div>
 		<section className="App-body">
-			<div className="card box">
+			<div className="card box input-box">
 				<Func />
 				<Axis />
 			</div>
-			<Plot />
+			<div className="card box plot-box">
+				<Plot />
+			</div>
 		</section>
 	</div>
 )

@@ -2,25 +2,43 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 //import compile from 'interval-arithmetic-eval'
-import { setFunctionInput, setFunction } from './actions'
+import { setFunctionInput, setFunction, funcErrors, setData } from './actions'
 import addHistory from '../history/actions'
+import refreshData from '../lib/refreshData'
 
 class ReactComponent extends Component {
 	static propTypes = {
 		funcvalue: PropTypes.string,
+		errors: PropTypes.array,
 		setFunction: PropTypes.func,
 		setFunctionInput: PropTypes.func,
 		addHistory: PropTypes.func,
+		funcErrors: PropTypes.func,
+		setData: PropTypes.func,
+		xaxis: PropTypes.array,
+		yaxis: PropTypes.array,
 	}
 
 	handleSubmit = e => {
 		e.preventDefault()
-		this.props.setFunction(this.props.funcvalue, [0, 1, 2])
-		this.props.addHistory(this.props.funcvalue)
+		let newfunc = this.props.funcvalue
+		if (newfunc.replace('x', '').match(/[a-z]/i)) {
+			this.props.funcErrors(['This function contains letters other than x'])
+		} else if (
+			isNaN(newfunc[newfunc.length - 1]) &&
+			newfunc[newfunc.length - 1] !== 'x'
+		) {
+			this.props.funcErrors(['This function does not end in a number or x'])
+		} else {
+			const data = refreshData(newfunc, this.props.xaxis, this.props.yaxis)
+			this.props.setFunction(newfunc)
+			this.props.setData(data)
+			this.props.addHistory(newfunc)
+		}
 	}
 
 	render() {
-		const { funcvalue, setFunctionInput } = this.props
+		const { funcvalue, setFunctionInput, errors } = this.props
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
@@ -31,6 +49,11 @@ class ReactComponent extends Component {
 						value={funcvalue}
 						onChange={e => setFunctionInput(e.target.value)}
 					/>
+					{errors.map((error, index) => (
+						<p className="error-text" key={index}>
+							{error}
+						</p>
+					))}
 				</form>
 			</div>
 		)
@@ -39,11 +62,14 @@ class ReactComponent extends Component {
 
 const mapStateToProps = state => ({
 	funcvalue: state.func.funcvalue,
+	errors: state.func.errors,
+	xaxis: state.axis.xaxis,
+	yaxis: state.axis.yaxis,
 })
 
 const connected = connect(
 	mapStateToProps,
-	{ setFunctionInput, setFunction, addHistory },
+	{ setFunctionInput, setFunction, addHistory, funcErrors, setData },
 )(ReactComponent)
 
 export default connected

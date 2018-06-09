@@ -1,10 +1,14 @@
-import { SET_FUNCTION, FUNCTION_ERRORS, SET_FUNCTION_INPUT } from './constants'
+import {
+	SET_FUNCTION,
+	FUNCTION_ERRORS,
+	SET_FUNCTION_INPUT,
+	SET_DATA,
+} from './constants'
 
-export function setFunction(func, data) {
+export function setFunction(func) {
 	return {
 		type: SET_FUNCTION,
 		func,
-		data,
 	}
 }
 
@@ -19,5 +23,12 @@ export function setFunctionInput(funcvalue) {
 	return {
 		type: SET_FUNCTION_INPUT,
 		funcvalue,
+	}
+}
+
+export function setData(data) {
+	return {
+		type: SET_DATA,
+		data,
 	}
 }

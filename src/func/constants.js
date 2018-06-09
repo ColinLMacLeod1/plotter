@@ -1,3 +1,4 @@
 export const SET_FUNCTION = 'SET_FUNCTION'
 export const FUNCTION_ERRORS = 'FUNCTION_ERRORS'
 export const SET_FUNCTION_INPUT = 'SET_FUNCTION_INPUT'
+export const SET_DATA = 'SET_DATA'
