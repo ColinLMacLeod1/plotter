@@ -8,9 +8,9 @@ It should be mobile friendly!
 Plotter is a simple web app that lets a user input a formula and it will generate a plot for them. The user can adjust the axes if needed.
 If the user inputs an invalid function or axis errors will appear. The web app is designed to be responsive and easy to use and should be usable on mobile, although there are some styling issues on iPhone.
 
-To try it out, click the link above.
-To run the dev server just `clone` the repo and run `npm run start` in the root directory and it will automatically open in you browser.
-To deploy to a github page, specify the `"homepgae"` in `packacge.json` and run `npm run deploy`
+To try it out, click the link above.  
+To run the dev server just `clone` the repo and run `npm run start` in the root directory and it will automatically open in you browser.  
+To deploy to a github page, specify the `"homepgae"` in `packacge.json` and run `npm run deploy`  
 A simple build can be done with `npm run build` but serving will need to be added
 
 ### Libraries Used
