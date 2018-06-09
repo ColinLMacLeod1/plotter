@@ -17,7 +17,6 @@ export default function refreshData(func, xaxis, yaxis) {
 			data.push({ x, y })
 			x += xstep
 		}
-		console.log(data)
 	}
 	return data
 }
